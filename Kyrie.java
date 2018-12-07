@@ -1,6 +1,9 @@
 import java.util.*;
+import java.util.ArrayList;
 public class Kyrie
 {
+    public ArrayList<String> inputs;
+    public ArrayList<String> outputs;
     /**
      * Get a default greeting   
      * @return a greeting
@@ -63,21 +66,21 @@ public class Kyrie
     }
     public String getHiResponse(String statement){
         String response = "";
-        if (findKeyword(statement, "Hi") >= 0 || findKeyword(statement, "hi") >= 0 ){
-            response = "You can't get too high since the earth is actually flat.";
-          }
-        else if (findKeyword(statement, "What's up") >= 0|| findKeyword(statement, "what's up") >= 0){
-            response = "Nothing cuz the earth is actually flat.";
-          }
-          else if (findKeyword(statement, "Hello") >= 0|| findKeyword(statement, "hello") >= 0){
-            response = "Sike the earth is flat";
-          }
-          else if (findKeyword(statement, "How's it going") >= 0|| findKeyword(statement, "how's it going") >= 0){
-            response = "Not that well since so many people think the earth is round.";
-          }
-          
-          return response;
-       }
+        inputs.add("Hi");
+        inputs.add("What's up");
+        inputs.add("Hello");
+        inputs.add("How's it going");
+        outputs.add("You can't get too high since the earth is actually flat.");
+        outputs.add("Nothing cuz the earth is actually flat.");
+        outputs.add("Sike the earth is flat.");
+        outputs.add("Not that well since so many people think the earth is round.");
+         if (inputs.contains(statement)|| inputs.contains(statement.substring(0,1).toUpperCase() + statement.substring(1))){
+            int i = inputs.indexOf(statement);
+            response = outputs.get(i);
+        }
+        return response;
+
+    }
     /**
      * Take a statement with "I want to <something>." and transform it into 
      * "What would it mean to <something>?"

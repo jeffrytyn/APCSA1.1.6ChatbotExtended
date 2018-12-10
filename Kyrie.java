@@ -2,8 +2,6 @@ import java.util.*;
 import java.util.ArrayList;
 public class Kyrie
 {
-    public ArrayList<String> inputs;
-    public ArrayList<String> outputs;
     /**
      * Get a default greeting   
      * @return a greeting
@@ -65,21 +63,32 @@ public class Kyrie
         return response;
     }
     public String getHiResponse(String statement){
-        String response = "";
-        inputs.add("Hi");
-        inputs.add("What's up");
-        inputs.add("Hello");
-        inputs.add("How's it going");
-        outputs.add("You can't get too high since the earth is actually flat.");
-        outputs.add("Nothing cuz the earth is actually flat.");
-        outputs.add("Sike the earth is flat.");
-        outputs.add("Not that well since so many people think the earth is round.");
-         if (inputs.contains(statement)|| inputs.contains(statement.substring(0,1).toUpperCase() + statement.substring(1))){
-            int i = inputs.indexOf(statement);
+       String response = "";
+       ArrayList<String> inputs = new ArrayList<String>();
+       ArrayList<String> outputs = new ArrayList<String>();
+       inputs.add("Hi");
+       inputs.add("What's up");
+       inputs.add("Hello");
+       inputs.add("How's it going");
+       outputs.add("You can't get too high since the earth is actually flat.");
+       outputs.add("Nothing cuz the earth is actually flat.");
+       outputs.add("Sike the earth is flat.");
+       outputs.add("Not that well since so many people think the earth is round.");
+       int i = 0;
+        if (findKeyword(statement, inputs.get(i).toString()) >= 0){
             response = outputs.get(i);
+            return response;
+        }else if (findKeyword(statement, inputs.get(i++).toString()) >= 0){
+            response = outputs.get(i-1);
+            return response;
+        }else if (findKeyword(statement, inputs.get(i++).toString()) >= 0){
+            response = outputs.get(i-1);
+            return response;
+        }else if (findKeyword(statement, inputs.get(i++).toString()) >= 0){
+            response = outputs.get(i-2);
+            return response;
         }
-        return response;
-
+       return response;
     }
     /**
      * Take a statement with "I want to <something>." and transform it into 

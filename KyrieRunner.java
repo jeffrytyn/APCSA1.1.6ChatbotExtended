@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.*;
+import java.util.ArrayList;
 /**
  * Write a description of class KyrieRunner here.
  * 
@@ -8,20 +10,19 @@ import java.util.Scanner;
 public class KyrieRunner
 {
    public static void main(String[] args)
-	{
-		Kyrie kyrie = new Kyrie();
-		
-		System.out.println (kyrie.getGreeting());
-		Scanner in = new Scanner (System.in);
-		String statement = in.nextLine();
-		
-		while (!statement.equals("Bye"))
-		{
-
-		    System.out.println(kyrie.getHiResponse(statement));
-
-		    System.out.println (kyrie.getResponse(statement));
-			statement = in.nextLine();
-		}
-	}
+    {
+        Kyrie kyrie = new Kyrie();
+        
+        System.out.println (kyrie.getGreeting());
+        Scanner in = new Scanner (System.in);
+        String statement = in.nextLine();
+        
+        while (!statement.equals("Bye"))
+        {
+            System.out.println(kyrie.getHiResponse(statement));
+            System.out.println (kyrie.getResponse(statement));
+            statement = in.nextLine();
+        }
+    }
+   
 }

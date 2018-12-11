@@ -11,7 +11,10 @@ public class Kyrie
     public static ArrayList<String> evidenceOutputs;
     public static ArrayList<String> learningInputs;
     public static ArrayList<String> learningOutputs;
-    
+    /**
+     * Creates the arrays containing the inputs and outputs related to introductory statement.
+     * Used in the getResponse method
+     */
     public static void createHiArrays(){
      hiInputs = new ArrayList<String>();
      hiOutputs = new ArrayList<String>();
@@ -26,6 +29,10 @@ public class Kyrie
      hiOutputs.add("Not that well since so many people think the earth is round lmao.");
     
     }
+    /**
+     * Creates the arrays containing the inputs and outputs related to "what is flat earth" statements.
+     * Used in the getResponse method
+     */
     public static void createWhatIsArrays(){
      whatIsInputs = new ArrayList<String>();
      whatIsOutputs = new ArrayList<String>();
@@ -55,6 +62,10 @@ public class Kyrie
      whatIsOutputs.add("We are a group that believes in a non-spherical world.");
      whatIsOutputs.add("Flat Earth Theory is neither officially nor unofficially associated with any religion.");
     }
+    /**
+     * Creates the arrays containing the inputs and outputs related to "evidence for flat earth" statements.
+     * Used in the getResponse method
+     */
     public static void createEvidenceArrays(){
         evidenceInputs = new ArrayList<String>();
         evidenceOutputs = new ArrayList<String>();
@@ -70,6 +81,10 @@ public class Kyrie
         evidenceOutputs.add("Quite simply you cannot see the earth's curvature from the window of a plane. It is widely stated you would need to be at a height of at least 40,000 ft to get even a hint of curvature if earth were round. Commercial aircraft are not allowed to fly this high. They are only allowed to fly just under this altitude. 36,000ft might be typical. In addition, the windows on commercial aircraft are small and heavily curved. Even if they flew high enough for a person to see curvature, it would still not be visible to passengers.");
         evidenceOutputs.add("Photos of the globe are photoshopped; GPS devices are also rigged to make airplane pilots think they are flying in straight lines around a sphere when they are actually flying in circles above a disc.");
     }
+    /**
+     * Creates the arrays containing the inputs and outputs related to "how do I learn more about flat earth" statement.
+     * Used in the getResponse method
+     */
     public static void createLearningArrays(){
         learningInputs = new ArrayList<String>();
         learningOutputs = new ArrayList<String>();
@@ -83,6 +98,11 @@ public class Kyrie
         learningOutputs.add("You can learn more by consulting the Flat Earth Society Library, which contains newspapers, articles, and interviews regarding flat earth theory. You can also tune into the Flat Earth Society podcast.");
         learningOutputs.add("You can become an Associate Member or Friend of the Flat Earth Society through different means. Check theflatearthsociety.org for more information.");
     }
+    
+    /**
+     * Creates the arrays containing the random response to statements not included in the previous arraylists.
+     * Used in the getResponse method
+     */
     public static void createRandomResponse(){
         randomResponse = new ArrayList<String>();
         randomResponse.add("Your round-earth believing brain disgusts me.");

@@ -7,6 +7,10 @@ public class Kyrie
     public static ArrayList<String> whatIsInputs;
     public static ArrayList<String> whatIsOutputs;
     public static ArrayList<String> randomResponse;
+    public static ArrayList<String> evidenceInputs;
+    public static ArrayList<String> evidenceOutputs;
+    public static ArrayList<String> learningInputs;
+    public static ArrayList<String> learningOutputs;
     
     public static void createHiArrays(){
      hiInputs = new ArrayList<String>();
@@ -31,21 +35,51 @@ public class Kyrie
      whatIsInputs.add("explain flat earth theory");
      whatIsInputs.add("you're wrong");
      whatIsInputs.add("why does almost everyone disagree with you");
-     whatIsInputs.add("do you guys believe in gravity");
-     whatIsInputs.add("why does our world look somewhat round when in space");
+     whatIsInputs.add("believe in gravity");
+     whatIsInputs.add("round from space");
      whatIsInputs.add("if other planets are round why isn't earth");
      whatIsInputs.add("what is the flat earth society");
+     whatIsInputs.add("a religion");
      
      whatIsOutputs.add("According to Wikipedia, flat Earth model is an archaic conception of Earth's shape as a plane or disk.  Many ancient cultures subscribed to a flat Earth cosmography, including Greece until the classical period, the Bronze Age and Iron Age civilizations of the Near East until the Hellenistic period, India until the Gupta period (early centuries AD), and China until the 17th century.");
      whatIsOutputs.add("Yes indeed as more and more support is being gained flat earth theory is growing in popularity.");
      whatIsOutputs.add("You’re wrong there is strong evidence for flat earth and increasing scientific research being conducted.");
-     whatIsOutputs.add("Imagine something round, but like flat.");
+     whatIsOutputs.add("The leading flat-earther theory holds that Earth is a disc with the Arctic Circle in the center and Antarctica, a 150-foot-tall wall of ice, around the rim. NASA employees guard this ice wall to prevent people from climbing over and falling off the disc.");
      whatIsOutputs.add("fight me");
      whatIsOutputs.add("They are not educated enough to understand such complex concepts.");
-     whatIsOutputs.add("No, but we do believe that the reason we don’t fall off is due to the earth’s acceleration of 32 ft/sec.");
+     whatIsOutputs.add("No, but we do believe that the reason we don’t fall off is due to the earth’s acceleration of 32 ft/sec upward.");
      whatIsOutputs.add("They are using fisheye lenses that make the flat earth look rounded.");
      whatIsOutputs.add("The Earth is not a planet by definition, as it sits at the center of our solar system above which the planets and the Sun revolve. The earth's uniqueness, fundamental differences and centrality makes any comparison to other nearby celestial bodies insufficient - Like comparing basketballs to the court on which they bounce.");
      whatIsOutputs.add("We are a group that believes in a non-spherical world.");
+     whatIsOutputs.add("Flat Earth Theory is neither officially nor unofficially associated with any religion.");
+    }
+    public static void createEvidenceArrays(){
+        evidenceInputs = new ArrayList<String>();
+        evidenceOutputs = new ArrayList<String>();
+        evidenceInputs.add("evidence");
+        evidenceInputs.add("don't believe you");
+        evidenceInputs.add("day and night cycles");
+        evidenceInputs.add("plane");
+        evidenceInputs.add("pictures of Earth");
+        
+        evidenceOutputs.add("Walking around on the planet's surface, it looks and feels flat.");
+        evidenceOutputs.add("The world looks flat, the bottoms of clouds are flat, the movement of the sun; these are all examples of your senses telling you that we do not live on a spherical heliocentric world. Using Descartes' method of Cartesian doubt to skeptically view the world around us, one quickly finds that the notion of a spherical world is the theory which has the burden of proof and not flat earth theory."); 
+        evidenceOutputs.add("Day and night cycles are easily explained on a flat earth. The sun moves in circles around the North Pole. When it is over your head, it's day. When it's not, it's night. The sun acts like a spotlight and shines downward as it moves.");
+        evidenceOutputs.add("Quite simply you cannot see the earth's curvature from the window of a plane. It is widely stated you would need to be at a height of at least 40,000 ft to get even a hint of curvature if earth were round. Commercial aircraft are not allowed to fly this high. They are only allowed to fly just under this altitude. 36,000ft might be typical. In addition, the windows on commercial aircraft are small and heavily curved. Even if they flew high enough for a person to see curvature, it would still not be visible to passengers.");
+        evidenceOutputs.add("Photos of the globe are photoshopped; GPS devices are also rigged to make airplane pilots think they are flying in straight lines around a sphere when they are actually flying in circles above a disc.");
+    }
+    public static void createLearningArrays(){
+        learningInputs = new ArrayList<String>();
+        learningOutputs = new ArrayList<String>();
+        learningInputs.add("supports you");
+        learningInputs.add("members");
+        learningInputs.add("learn more");
+        learningInputs.add("join");
+        
+        learningOutputs.add("Flat earth support is growing. In fact, on November 9th in 2017, 500 flat-Earthers assembled in North Carolina for the first annual Flat Earth International Conference.");
+        learningOutputs.add("B.o.B., Shaq, D. Marble, Tila Tequila, Freddie Flintoff, and Daniel Shenton are just a few of our celebrity followers.");
+        learningOutputs.add("You can learn more by consulting the Flat Earth Society Library, which contains newspapers, articles, and interviews regarding flat earth theory. You can also tune into the Flat Earth Society podcast.");
+        learningOutputs.add("You can become an Associate Member or Friend of the Flat Earth Society through different means. Check theflatearthsociety.org for more information.");
     }
     public static void createRandomResponse(){
         randomResponse = new ArrayList<String>();
@@ -60,7 +94,7 @@ public class Kyrie
         randomResponse.add("I’m just gonna say it, Gordon Hayward isn’t as good as me.");
         randomResponse.add("Kehlani i miss u come back please.");
         randomResponse.add("Come again? ");
-        randomResponse.add("I am a robot with a limited database of input statements please refrain from convoluted sentences.");
+        randomResponse.add("I am a robot with a limited database please refrain from convoluted sentences.");
     }
     
     /**
@@ -84,15 +118,23 @@ public class Kyrie
         String response = "";
         createHiArrays();
         createWhatIsArrays();
+        createEvidenceArrays();
+        createLearningArrays();
         if (statement.length() == 0)
         {
             response = "I'm just waiting here.";
         }
-        else if(hiInputs.contains(statement.toLowerCase()) == true){
-             response = getHiResponse(statement);   
-            }
-        else if(whatIsInputs.contains(statement.toLowerCase()) == true){
+        else if(keywordPresent(statement, hiInputs) == true){
+             response = getHiResponse(statement);
+        }
+        else if(keywordPresent(statement, whatIsInputs) == true){
              response = getWhatIsResponse(statement);   
+            }
+        else if(keywordPresent(statement, evidenceInputs) == true){
+             response = getEvidenceResponse(statement);   
+            }
+         else if(keywordPresent(statement, learningInputs) == true){
+             response = getLearningResponse(statement);   
             }
 
         else if (findKeyword(statement, "no") >= 0)
@@ -151,6 +193,88 @@ public class Kyrie
        }
        return response;
     }
+    public String getEvidenceResponse(String statement){
+       String response = "";
+       for(int i = 0; i < evidenceInputs.size(); i++){
+        if (findKeyword(statement.toLowerCase(), evidenceInputs.get(i).toString()) >= 0){
+            response = evidenceOutputs.get(i);
+        }
+       }
+       return response;
+    }
+    public String getLearningResponse(String statement){
+       String response = "";
+       for(int i = 0; i < learningInputs.size(); i++){
+        if (findKeyword(statement.toLowerCase(), learningInputs.get(i).toString()) >= 0){
+            response = learningOutputs.get(i);
+        }
+       }
+       return response;
+    }
+    /**
+     * Search for one word in phrase.  The search is not case sensitive.
+     * This method will check that the given goal is not a substring of a longer string
+     * (so, for example, "I know" does not contain "no").  
+     * @param statement the string to search
+     * @param goal the string to search for
+     * @param startPos the character of the string to begin the search at
+     * @return the index of the first occurrence of goal in statement or -1 if it's not found
+     */
+    private int findKeyword(String statement, String goal, int startPos)
+    {
+        String phrase = statement.trim();
+        //  The only change to incorporate the startPos is in the line below
+        int psn = phrase.toLowerCase().indexOf(goal.toLowerCase(), startPos);
+        
+        //  Refinement--make sure the goal isn't part of a word 
+        while (psn >= 0) 
+        {
+            //  Find the string of length 1 before and after the word
+            String before = " ", after = " "; 
+            if (psn > 0)
+            {
+                before = phrase.substring (psn - 1, psn).toLowerCase();
+            }
+            if (psn + goal.length() < phrase.length())
+            {
+                after = phrase.substring(psn + goal.length(), psn + goal.length() + 1).toLowerCase();
+            }
+            
+            //  If before and after aren't letters, we've found the word
+            if (((before.compareTo ("a") < 0 ) || (before.compareTo("z") > 0))  //  before is not a letter
+                    && ((after.compareTo ("a") < 0 ) || (after.compareTo("z") > 0)))
+            {
+                return psn;
+            }
+            
+            //  The last position didn't work, so let's find the next, if there is one.
+            psn = phrase.indexOf(goal.toLowerCase(), psn + 1);
+            
+        }
+        
+        return -1;
+    }
+    private boolean keywordPresent(String statement, ArrayList<String> inputs){
+       boolean response = false; 
+        for(int i = 0; i < inputs.size(); i++){
+        if (findKeyword(statement.toLowerCase(), inputs.get(i).toString()) >= 0){
+            response = true;
+        }
+       }
+       return response;
+    }
+    /**
+     * Search for one word in phrase.  The search is not case sensitive.
+     * This method will check that the given goal is not a substring of a longer string
+     * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.  
+     * @param statement the string to search
+     * @param goal the string to search for
+     * @return the index of the first occurrence of goal in statement or -1 if it's not found
+     */
+    private int findKeyword(String statement, String goal)
+    {
+        return findKeyword (statement, goal, 0);
+    }
     /**
      * Take a statement with "I want to <something>." and transform it into 
      * "What would it mean to <something>?"
@@ -198,62 +322,6 @@ public class Kyrie
         
         String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
         return "What makes you think that I " + restOfStatement + " you?";
-    }
-    /**
-     * Search for one word in phrase.  The search is not case sensitive.
-     * This method will check that the given goal is not a substring of a longer string
-     * (so, for example, "I know" does not contain "no").  
-     * @param statement the string to search
-     * @param goal the string to search for
-     * @param startPos the character of the string to begin the search at
-     * @return the index of the first occurrence of goal in statement or -1 if it's not found
-     */
-    private int findKeyword(String statement, String goal, int startPos)
-    {
-        String phrase = statement.trim();
-        //  The only change to incorporate the startPos is in the line below
-        int psn = phrase.toLowerCase().indexOf(goal.toLowerCase(), startPos);
-        
-        //  Refinement--make sure the goal isn't part of a word 
-        while (psn >= 0) 
-        {
-            //  Find the string of length 1 before and after the word
-            String before = " ", after = " "; 
-            if (psn > 0)
-            {
-                before = phrase.substring (psn - 1, psn).toLowerCase();
-            }
-            if (psn + goal.length() < phrase.length())
-            {
-                after = phrase.substring(psn + goal.length(), psn + goal.length() + 1).toLowerCase();
-            }
-            
-            //  If before and after aren't letters, we've found the word
-            if (((before.compareTo ("a") < 0 ) || (before.compareTo("z") > 0))  //  before is not a letter
-                    && ((after.compareTo ("a") < 0 ) || (after.compareTo("z") > 0)))
-            {
-                return psn;
-            }
-            
-            //  The last position didn't work, so let's find the next, if there is one.
-            psn = phrase.indexOf(goal.toLowerCase(), psn + 1);
-            
-        }
-        
-        return -1;
-    }
-    
-    /**
-     * Search for one word in phrase.  The search is not case sensitive.
-     * This method will check that the given goal is not a substring of a longer string
-     * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.  
-     * @param statement the string to search
-     * @param goal the string to search for
-     * @return the index of the first occurrence of goal in statement or -1 if it's not found
-     */
-    private int findKeyword(String statement, String goal)
-    {
-        return findKeyword (statement, goal, 0);
     }
 
     /**

@@ -16,10 +16,10 @@ public class Kyrie
      hiInputs.add("hello");
      hiInputs.add("how's it going");
      
-     hiOutputs.add("You can't get too high since the earth is actually flat.");
-     hiOutputs.add("Nothing cuz the earth is actually flat.");
+     hiOutputs.add("You can't get too high since the earth is actually flat fooled ya.");
+     hiOutputs.add("Nothing cuz the earth is actually flat goteem.");
      hiOutputs.add("Sike the earth is flat.");
-     hiOutputs.add("Not that well since so many people think the earth is round.");
+     hiOutputs.add("Not that well since so many people think the earth is round lmao.");
     
     }
     public static void createWhatIsArrays(){

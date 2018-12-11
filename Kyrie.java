@@ -29,10 +29,10 @@ public class Kyrie
      whatIsInputs.add("people think the earth is flat");
      whatIsInputs.add("flat earth is false");
      whatIsInputs.add("explain flat earth theory");
-     whatIsInputs.add("no its not");
+     whatIsInputs.add("you're wrong");
      whatIsInputs.add("why does almost everyone disagree with you");
      whatIsInputs.add("do you guys believe in gravity");
-     whatIsInputs.add("why does our world somewhat round when in space");
+     whatIsInputs.add("why does our world look somewhat round when in space");
      whatIsInputs.add("if other planets are round why isn't earth");
      whatIsInputs.add("what is the flat earth society");
      
@@ -82,10 +82,18 @@ public class Kyrie
     public String getResponse(String statement)
     {
         String response = "";
+        createHiArrays();
+        createWhatIsArrays();
         if (statement.length() == 0)
         {
             response = "I'm just waiting here.";
         }
+        else if(hiInputs.contains(statement.toLowerCase()) == true){
+             response = getHiResponse(statement);   
+            }
+        else if(whatIsInputs.contains(statement.toLowerCase()) == true){
+             response = getWhatIsResponse(statement);   
+            }
 
         else if (findKeyword(statement, "no") >= 0)
         {
@@ -116,6 +124,7 @@ public class Kyrie
             {
                 response = transformYouMeStatement(statement);
             }
+
             else
             {
                 response = getRandomResponse();
@@ -126,7 +135,6 @@ public class Kyrie
     
     public String getHiResponse(String statement){
        String response = "";
-       createHiArrays();
        for(int i = 0; i < hiInputs.size(); i++){
         if (findKeyword(statement.toLowerCase(), hiInputs.get(i).toString()) >= 0){
             response = hiOutputs.get(i);
@@ -136,7 +144,6 @@ public class Kyrie
     }
     public String getWhatIsResponse(String statement){
        String response = "";
-       createWhatIsArrays();
        for(int i = 0; i < whatIsInputs.size(); i++){
         if (findKeyword(statement.toLowerCase(), whatIsInputs.get(i).toString()) >= 0){
             response = whatIsOutputs.get(i);
@@ -258,56 +265,7 @@ public class Kyrie
         String response = "";
         createRandomResponse();
         int whichResponse = (int)(Math.random() * 12);
-        
-        if (whichResponse == 0)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 1)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 2)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 3)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 4)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 5)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 6)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 7)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 8)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 9)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 10)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-        else if (whichResponse == 11)
-        {
-            response = randomResponse.get(whichResponse);
-        }
-
+        response = randomResponse.get(whichResponse);
         return response;
     }
 

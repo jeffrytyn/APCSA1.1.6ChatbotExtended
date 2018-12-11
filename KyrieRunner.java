@@ -20,6 +20,7 @@ public class KyrieRunner
         while (!statement.equals("Bye"))
         {
             System.out.println(kyrie.getHiResponse(statement));
+            System.out.println(kyrie.getWhatIsResponse(statement));
             System.out.println (kyrie.getResponse(statement));
             statement = in.nextLine();
         }

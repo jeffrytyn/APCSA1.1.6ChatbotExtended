@@ -2,6 +2,67 @@ import java.util.*;
 import java.util.ArrayList;
 public class Kyrie
 {
+    public static ArrayList<String> hiInputs;
+    public static ArrayList<String> hiOutputs;
+    public static ArrayList<String> whatIsInputs;
+    public static ArrayList<String> whatIsOutputs;
+    public static ArrayList<String> randomResponse;
+    
+    public static void createHiArrays(){
+     hiInputs = new ArrayList<String>();
+     hiOutputs = new ArrayList<String>();
+     hiInputs.add("hi");
+     hiInputs.add("what's up");
+     hiInputs.add("hello");
+     hiInputs.add("how's it going");
+     
+     hiOutputs.add("You can't get too high since the earth is actually flat.");
+     hiOutputs.add("Nothing cuz the earth is actually flat.");
+     hiOutputs.add("Sike the earth is flat.");
+     hiOutputs.add("Not that well since so many people think the earth is round.");
+    
+    }
+    public static void createWhatIsArrays(){
+     whatIsInputs = new ArrayList<String>();
+     whatIsOutputs = new ArrayList<String>();
+     whatIsInputs.add("what's flat earth theory");
+     whatIsInputs.add("people think the earth is flat");
+     whatIsInputs.add("flat earth is false");
+     whatIsInputs.add("explain flat earth theory");
+     whatIsInputs.add("no its not");
+     whatIsInputs.add("why does almost everyone disagree with you");
+     whatIsInputs.add("do you guys believe in gravity");
+     whatIsInputs.add("why does our world somewhat round when in space");
+     whatIsInputs.add("if other planets are round why isn't earth");
+     whatIsInputs.add("what is the flat earth society");
+     
+     whatIsOutputs.add("According to Wikipedia, flat Earth model is an archaic conception of Earth's shape as a plane or disk.  Many ancient cultures subscribed to a flat Earth cosmography, including Greece until the classical period, the Bronze Age and Iron Age civilizations of the Near East until the Hellenistic period, India until the Gupta period (early centuries AD), and China until the 17th century.");
+     whatIsOutputs.add("Yes indeed as more and more support is being gained flat earth theory is growing in popularity.");
+     whatIsOutputs.add("You’re wrong there is strong evidence for flat earth and increasing scientific research being conducted.");
+     whatIsOutputs.add("Imagine something round, but like flat.");
+     whatIsOutputs.add("fight me");
+     whatIsOutputs.add("They are not educated enough to understand such complex concepts.");
+     whatIsOutputs.add("No, but we do believe that the reason we don’t fall off is due to the earth’s acceleration of 32 ft/sec.");
+     whatIsOutputs.add("They are using fisheye lenses that make the flat earth look rounded.");
+     whatIsOutputs.add("The Earth is not a planet by definition, as it sits at the center of our solar system above which the planets and the Sun revolve. The earth's uniqueness, fundamental differences and centrality makes any comparison to other nearby celestial bodies insufficient - Like comparing basketballs to the court on which they bounce.");
+     whatIsOutputs.add("We are a group that believes in a non-spherical world.");
+    }
+    public static void createRandomResponse(){
+        randomResponse = new ArrayList<String>();
+        randomResponse.add("Your round-earth believing brain disgusts me.");
+        randomResponse.add("If the earth is round, why do pictures from space only show one side?");
+        randomResponse.add("The Bermuda Triangle is just a hole through the planet.");
+        randomResponse.add("Missing Malaysian Airlines flight 370 fell off the planet, case closed.");
+        randomResponse.add("The reason we don’t feel upside down on the other side of the planet is because there’s only one side.");
+        randomResponse.add("flatearth101.com, go check it out.");
+        randomResponse.add("A flat earth occupies less volume, and that’s why we haven’t been hit by a massive asteroid yet.");
+        randomResponse.add("Thanksgiving is overrated.");
+        randomResponse.add("I’m just gonna say it, Gordon Hayward isn’t as good as me.");
+        randomResponse.add("Kehlani i miss u come back please.");
+        randomResponse.add("Come again? ");
+        randomResponse.add("I am a robot with a limited database of input statements please refrain from convoluted sentences.");
+    }
+    
     /**
      * Get a default greeting   
      * @return a greeting
@@ -62,32 +123,25 @@ public class Kyrie
         }
         return response;
     }
+    
     public String getHiResponse(String statement){
        String response = "";
-       ArrayList<String> inputs = new ArrayList<String>();
-       ArrayList<String> outputs = new ArrayList<String>();
-       inputs.add("Hi");
-       inputs.add("What's up");
-       inputs.add("Hello");
-       inputs.add("How's it going");
-       outputs.add("You can't get too high since the earth is actually flat.");
-       outputs.add("Nothing cuz the earth is actually flat.");
-       outputs.add("Sike the earth is flat.");
-       outputs.add("Not that well since so many people think the earth is round.");
-       int i = 0;
-        if (findKeyword(statement, inputs.get(i).toString()) >= 0){
-            response = outputs.get(i);
-            return response;
-        }else if (findKeyword(statement, inputs.get(i++).toString()) >= 0){
-            response = outputs.get(i-1);
-            return response;
-        }else if (findKeyword(statement, inputs.get(i++).toString()) >= 0){
-            response = outputs.get(i-1);
-            return response;
-        }else if (findKeyword(statement, inputs.get(i++).toString()) >= 0){
-            response = outputs.get(i-2);
-            return response;
+       createHiArrays();
+       for(int i = 0; i < hiInputs.size(); i++){
+        if (findKeyword(statement.toLowerCase(), hiInputs.get(i).toString()) >= 0){
+            response = hiOutputs.get(i);
         }
+       }
+       return response;
+    }
+    public String getWhatIsResponse(String statement){
+       String response = "";
+       createWhatIsArrays();
+       for(int i = 0; i < whatIsInputs.size(); i++){
+        if (findKeyword(statement.toLowerCase(), whatIsInputs.get(i).toString()) >= 0){
+            response = whatIsOutputs.get(i);
+        }
+       }
        return response;
     }
     /**
@@ -202,19 +256,7 @@ public class Kyrie
     private String getRandomResponse()
     {
         String response = "";
-        ArrayList<String> randomResponse = new ArrayList<String>();
-        randomResponse.add("Your round-earth believing brain disgusts me.");
-        randomResponse.add("If the earth is round, why do pictures from space only show one side?");
-        randomResponse.add("The Bermuda Triangle is just a hole through the planet.");
-        randomResponse.add("Missing Malaysian Airlines flight 370 fell off the planet, case closed.");
-        randomResponse.add("The reason we don’t feel upside down on the other side of the planet is because there’s only one side.");
-        randomResponse.add("flatearth101.com, go check it out.");
-        randomResponse.add("A flat earth occupies less volume, and that’s why we haven’t been hit by a massive asteroid yet.");
-        randomResponse.add("Thanksgiving is overrated.");
-        randomResponse.add("I’m just gonna say it, Gordon Hayward’s isn’t as good as me.");
-        randomResponse.add("Kehlani i miss u come back please.");
-        randomResponse.add("Come again? ");
-        randomResponse.add("I am a robot with a limited database of input statements please refrain from convoluted sentences.");
+        createRandomResponse();
         int whichResponse = (int)(Math.random() * 12);
         
         if (whichResponse == 0)

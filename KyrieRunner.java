@@ -19,25 +19,27 @@ public class KyrieRunner
         {
           if(kyrie.findKeyword(statement.toLowerCase(), "my name is") >= 0){
              int psn = kyrie.findKeyword(statement.toLowerCase(), "my name is") + 10;
-             System.out.println("Hi" + statement.substring(psn) + ", would you like to join the Flat Earth Society (Y/N)?");
+             System.out.println("Hi" + statement.substring(psn) + ", sorry for lying to you like the rest of the world, but I'm actually a flat earth bot. \nWould you like to join the Flat Earth Society (Y/N)?");
              statement = in.nextLine();
             if(statement.equals("Y")){
               System.out.println("Great! People like us question tradition. Would you be willing to give us your credit card number (Y/N)?");
               statement = in.nextLine();
               if(statement.equals("Y")){
-               System.out.println("Amazing! Please type in your card's number, expiration date, and security code.");
-               statement = in.nextLine();
-               while(tryParse(statement) == null){
+                System.out.println("Amazing! Please type in your card's number, expiration date, and security code.");
+                statement = in.nextLine();
+                while(tryParse(statement) == null){
                    System.out.println("Enter your card number please");
                    statement = in.nextLine();
-                }
-               System.out.println("Thank you for subscribing to the Flat Earth Society!");
-               statement = in.nextLine();
+                 }
+                System.out.println("Thank you for subscribing to the Flat Earth Society!");
+                statement = in.nextLine();
               }else{
-                 System.out.println("Ok that's fine have a good day."); 
+                 System.out.println("Ok that's fine have a good day.");
+                 statement = in.nextLine();
                 }
              }else{
                  System.out.println("Ok that's fine have a good day."); 
+                 statement = in.nextLine();
                 }
             }
           

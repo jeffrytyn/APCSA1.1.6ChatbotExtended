@@ -148,16 +148,16 @@ public class Kyrie
             response = "I'm just waiting here.";
         }
         else if(keywordPresent(statement, hiInputs) == true){
-             response = getResponse(statement, hiInputs, hiOutputs);
+             response = createResponse(statement, hiInputs, hiOutputs);
         }
         else if(keywordPresent(statement, whatIsInputs) == true){
-             response = getResponse(statement, whatIsInputs, whatIsOutputs);   
+             response = createResponse(statement, whatIsInputs, whatIsOutputs);   
             }
         else if(keywordPresent(statement, evidenceInputs) == true){
-             response = getResponse(statement, evidenceInputs, evidenceOutputs);   
+             response = createResponse(statement, evidenceInputs, evidenceOutputs);   
             }
          else if(keywordPresent(statement, learningInputs) == true){
-             response = getResponse(statement, learningInputs, learningOutputs);   
+             response = createResponse(statement, learningInputs, learningOutputs);   
             }
 
         else if (findKeyword(statement, "no") >= 0)
@@ -202,10 +202,15 @@ public class Kyrie
         }
         return response;
     }
-    private String getResponse(String statement, ArrayList<String> inputs, ArrayList<String> outputs){
+    /**
+     * Gives a response to a user statement and in accordance with database of keywords
+     * @param statement, arraylist with inputs to compare the statement with, and arraylist with outputs to give the response
+     * @return a response based on the rules given
+     */
+    private String createResponse(String statement, ArrayList<String> inputs, ArrayList<String> outputs){
        String response = "";
        for(int i = 0; i < inputs.size(); i++){
-        if (findKeyword(statement.toLowerCase(), inputs.get(i).toString()) >= 0){
+        if (findKeyword(statement.toLowerCase(), inputs.get(i)) >= 0){
             response = outputs.get(i);
         }
        }
@@ -255,10 +260,15 @@ public class Kyrie
         
         return -1;
     }
+    /**
+     * Gives the user feedback based on whether their statement has a keyword that is also included in an input arraylist
+     * @param statement and arraylist with inputs to compare the statement with
+     * @return true or false based on if a keyword is present in the statement
+     */
     private boolean keywordPresent(String statement, ArrayList<String> inputs){
        boolean response = false; 
         for(int i = 0; i < inputs.size(); i++){
-        if (findKeyword(statement.toLowerCase(), inputs.get(i).toString()) >= 0){
+        if (findKeyword(statement.toLowerCase(), inputs.get(i)) >= 0){
             response = true;
         }
        }
@@ -324,6 +334,12 @@ public class Kyrie
         String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
         return "What makes you think that I " + restOfStatement + " you?";
     }
+    /**
+     * Take a statement with "I <something> you because..." and transform it into 
+     * "Why do you <something> me because of that?"
+     * @param statement the user statement, assumed to contain "I" followed by "you because"
+     * @return the transformed statement
+     */
     private String transformIYouBecauseStatement(String statement)
     {
         //  Remove the final period, if there is one

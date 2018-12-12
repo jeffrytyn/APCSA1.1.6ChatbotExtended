@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 public class Kyrie
 {
     public static ArrayList<String> hiInputs;
@@ -201,8 +202,7 @@ public class Kyrie
         }
         return response;
     }
-    
-    public String getResponse(String statement, ArrayList<String> inputs, ArrayList<String> outputs){
+    private String getResponse(String statement, ArrayList<String> inputs, ArrayList<String> outputs){
        String response = "";
        for(int i = 0; i < inputs.size(); i++){
         if (findKeyword(statement.toLowerCase(), inputs.get(i).toString()) >= 0){
@@ -221,7 +221,7 @@ public class Kyrie
      * @param startPos the character of the string to begin the search at
      * @return the index of the first occurrence of goal in statement or -1 if it's not found
      */
-    private int findKeyword(String statement, String goal, int startPos)
+    public int findKeyword(String statement, String goal, int startPos)
     {
         String phrase = statement.trim();
         //  The only change to incorporate the startPos is in the line below
@@ -272,7 +272,7 @@ public class Kyrie
      * @param goal the string to search for
      * @return the index of the first occurrence of goal in statement or -1 if it's not found
      */
-    private int findKeyword(String statement, String goal)
+    public int findKeyword(String statement, String goal)
     {
         return findKeyword (statement, goal, 0);
     }

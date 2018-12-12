@@ -26,7 +26,7 @@ public class Kyrie
      
      hiOutputs.add("You can't get too high since the earth is actually flat fooled ya.");
      hiOutputs.add("Nothing cuz the earth is actually flat goteem.");
-     hiOutputs.add("Sike the earth is flat.");
+     hiOutputs.add("Sike I'm actually a flat earth bot.");
      hiOutputs.add("Not that well since so many people think the earth is round lmao.");
     
     }

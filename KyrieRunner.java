@@ -40,9 +40,12 @@ public class KyrieRunner
                  System.out.println("Ok that's fine have a good day."); 
                 }
             }
+          
+            else{
             System.out.println (kyrie.getResponse(statement));
             statement = in.nextLine();
-        }
+          } 
+       }
           
     }
     

@@ -48,7 +48,13 @@ public class KyrieRunner
        }
           
     }
-    
+   /**
+     * Converts user statement to int, and if int exists returns a response; if error occurs, response is null
+     * 
+     * @param statement
+     *            the user statement
+     * @return a response based on the rules given
+     */
    public static String tryParse(String statement) {
         String response = ""; 
         try{    
